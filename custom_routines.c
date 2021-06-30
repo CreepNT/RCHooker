@@ -11,7 +11,7 @@
  */
 #define GetAddressForOffset(segment, offset, out)                                                                                                       \
     do {                                                                                                                                                \
-        int __rsvd_name = Module_GetAddressForOffset(game_modId, segement, offset, out);                                                                \
+        int __rsvd_name = Module_GetAddressForOffset(game_modId, segment, offset, out);                                                                \
         if (__rsvd_name < 0) LOG_ERROR("Module_GetAddressForOffset returned 0x%08X when getting address of (%u:0x%X).\n", __rsvd_name, segment, offset);\
         else println("Resolved (%u:0x%X) to 0x%08X successfully !\n", segment, offset, (uintptr_t)*out);                                                                                                                               \
     } while(0)
@@ -23,7 +23,7 @@
  * @param thumb 1 if target function runs in Thumb mode, 0 if it runs in ARM mode
  * @param out Pointer to a variable that will recieve the resolved address on success (should be pointer-sized)
  */
-#define GetFunctionAddressFromOffset(segment, offset, thumb, out) GetAddressForOffset(segement, offset | thumb, out)
+#define GetFunctionAddressFromOffset(segment, offset, thumb, out) GetAddressForOffset(segment, offset | thumb, out)
 /**
  * @brief Wrapper for HookAtOffset
  * 
